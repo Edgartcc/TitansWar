@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mokepon</title>
+    <script src="./js/mokepon.js"></script>
+</head>
+<body>
+    <h1>Mokepon 👿👾👽</h1>
+
+    <section id="seleccion-mascota">
+        <h2>Elije tu mascota:</h2>
+
+        <label for="aquaman">Aquaman</label>
+        <input type="radio" name="mascota" id="aquaman" />
+
+        <label for="lodin">Lodin</label>
+        <input type="radio" name="mascota" id="lodin" />
+
+        <label for="carboncillo">Carboncillo</label>
+        <input type="radio" name="mascota" id="carboncillo" />
+
+        <label for="sable">Sable</label>
+        <input type="radio" name="mascota" id="sable" />
+        
+        <label for="barrilete">Barrilete</label>
+        <input type="radio" name="mascota" id="barrilete" />
+        
+       
+
+        <button id="boton-mascota">Seleccionar</button>
+    </section>
+
+    <section id="ataque">
+        <h2>Elije tu ataque</h2>
+        <p>Tu mascota <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica -->
+        <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
+        <p>
+            <button id="boton-fuego">Fuego 🔥</button>
+            <button id="boton-agua">Agua 💦</button>
+            <button id="boton-tierra">Tierra 🌱</button>
+        </p>
+    </section>
+
+    <section id="mensajes">
+        
+    </section>
+ 
+    <section id="reiniciar">
+        <button id="boton-reiniciar">Reiniciar</button>
+    </section>
+    
+    
+</body>
+</html>
