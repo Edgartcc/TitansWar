@@ -5,38 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TitansWar</title>
-    <script src="./js/mokepon.js"></script>
+    <script src="./js/titanswar.js"></script>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h1>TitansWar 👿👾👽</h1>
+    
 
-    <section id="seleccion-mascota">
+    <section id="seleccion-titan">
+        <h1 class="titulo">Titans War</h1>
         <h2>Elije tu Titan:</h2>
 
-        <label for="aquaman">Aquaman</label>
-        <input type="radio" name="mascota" id="aquaman" />
+        <label class="tarjeta-titan" for="aquaman">Aquaman</label>
+        <input type="radio" name="titan" id="aquaman" />
 
-        <label for="lodin">Lodin</label>
-        <input type="radio" name="mascota" id="lodin" />
+        <label class="tarjeta-titan" for="lodin">Lodin</label>
+        <input type="radio" name="titan" id="lodin" />
 
-        <label for="carboncillo">Carboncillo</label>
-        <input type="radio" name="mascota" id="carboncillo" />
+        <label class="tarjeta-titan" for="carboncillo">Carboncillo</label>
+        <input type="radio" name="titan" id="carboncillo" />
 
-        <label for="sable">Sable</label>
-        <input type="radio" name="mascota" id="sable" />
+        <label class="tarjeta-titan" for="sable">Sable</label>
+        <input type="radio" name="titan" id="sable" />
         
-        <label for="barrilete">Barrilete</label>
-        <input type="radio" name="mascota" id="barrilete" />
-        
-       
+        <label class="tarjeta-titan" for="barrilete">Barrilete</label>
+        <input type="radio" name="titan" id="barrilete" /> 
 
-        <button id="boton-mascota">Seleccionar</button>
+        <button id="boton-titan">Seleccionar</button>
+
+        <section class="image-1" id="background">
+        </section>
+        
+        <section class="image-2" id="background">
+        </section>
+        
+        <section class="image-3" id="background">
+        </section>
+        
+        <section class="image-4" id="background">
+        </section>
     </section>
 
     <section id="ataque">
+        <h1 class="titulo">TitansWar 👹🐍🦐🤺</h1>
         <h2>Elije tu ataque</h2>
-        <p>Tu Titan <span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica -->
-        <p>El Titan <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
+
+        <p>Tu Titan <span id="titan-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica -->
+        <p>El Titan <span id="titan-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
         <p>
             <button id="boton-fuego">Fuego 🔥</button>
             <button id="boton-agua">Agua 💦</button>

@@ -10,8 +10,8 @@ function iniciarJuego() {
     let sectionReiniciar = document.getElementById("reiniciar")
     sectionReiniciar.style.display = "none"
 
-    let botonMascota = document.getElementById("boton-mascota")
-    botonMascota.addEventListener("click", seleccionarMascota)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido
+    let botonTitan = document.getElementById("boton-titan")
+    botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido
 
     let botonFuego = document.getElementById("boton-fuego")
     botonFuego.addEventListener("click", ataqueFuego)
@@ -26,12 +26,12 @@ function iniciarJuego() {
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
-function seleccionarMascota() {
+function seleccionarTitan() {
     let sectionSeleccionarAtaque = document.getElementById("ataque")
     sectionSeleccionarAtaque.style.display = "block" // style.display = block me permite volver a ver la seccion en cuestion
 
-    let sectionSeleccionarMascota = document.getElementById("seleccion-mascota")
-    sectionSeleccionarMascota.style.display = "none"
+    let sectionSeleccionarTitan = document.getElementById("seleccion-titan")
+    sectionSeleccionarTitan.style.display = "none"
 
     let inputAquaman = document.getElementById("aquaman")
     let inputLodin = document.getElementById("lodin")
@@ -55,24 +55,24 @@ function seleccionarMascota() {
         alert("Te falta seleccionar mi brother")
     }
     
-    seleccionarMascotaEnemigo()
+    seleccionarTitanEnemigo()
     
 }
 
-function seleccionarMascotaEnemigo() {
-    let mascotaAleatorio = aleatorio(1,5)
-    let mascotaEnemigo = document.getElementById("mascota-enemigo")
+function seleccionarTitanEnemigo() {
+    let titanAleatorio = aleatorio(1,5)
+    let titanEnemigo = document.getElementById("titan-enemigo")
 
-    if (mascotaAleatorio == 1) {
-        mascotaEnemigo.innerHTML = "Aquaman" //Aquaman
-    } else if (mascotaAleatorio == 2) {
-        mascotaEnemigo.innerHTML = "Lodin"//Lodin
-    } else if (mascotaAleatorio == 3) {
-        mascotaEnemigo.innerHTML = "Carboncillo"
-    } else if (mascotaAleatorio == 4) {
-        mascotaEnemigo.innerHTML = "Sable"
+    if (titanAleatorio == 1) {
+        titanEnemigo.innerHTML = "Aquaman" //Aquaman
+    } else if (titanAleatorio == 2) {
+        titanEnemigo.innerHTML = "Lodin"//Lodin
+    } else if (titanAleatorio == 3) {
+        titanEnemigo.innerHTML = "Carboncillo"
+    } else if (titanAleatorio == 4) {
+        titanEnemigo.innerHTML = "Sable"
     } else {
-        mascotaEnemigo.innerHTML = "Barrilete"
+        titanEnemigo.innerHTML = "Barrilete"
     }
 }
 
@@ -146,7 +146,7 @@ function crearMensaje() {
     let sectionMensajes = document.getElementById("mensajes")
 
     let parrafo= document.createElement("p")
-    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " + ataqueEnemigo + ", " + resultadocombate //parrafoCombate es la variable para el primer parrafo.
+    parrafo.innerHTML = "Tu titan atacó con " + ataqueJugador + ", el titan del enemigo atacó con " + ataqueEnemigo + ", " + resultadocombate //parrafoCombate es la variable para el primer parrafo.
 
     
 
