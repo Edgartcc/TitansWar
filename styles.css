@@ -33,6 +33,7 @@ body:before {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
    
 }
 
@@ -41,13 +42,13 @@ body:before {
     font-size: 4rem;
     margin-bottom: 4rem;
     padding: 4rem;
-    position: relative;
+    
     
 }
 .subtitulo{
     color: white;
     font-size: 20px;
-    position: relative;
+    
 }
 
 
@@ -55,6 +56,7 @@ body:before {
 .tarjetas {
     display: flex;
     gap: 10px;
+    
 }
 
 .tarjeta-titan {
@@ -73,7 +75,7 @@ body:before {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: relative;
+    
     color: white;
     
 }
@@ -81,7 +83,7 @@ body:before {
 .tarjeta-titan img {
     width: 80px;
     margin-top: 3rem;
-    lex-wrap: ;
+    
 }
 
 .tarjeta-titan p {
@@ -96,9 +98,9 @@ body:before {
     font-size: 1rem;
     border: none;
     box-shadow: 0px 7px 32px -5px rgba(0, 0, 0, 0.7);
-    position: relative;
+    
 }
 
 input {
-    display: none;
+    display: block;
 }
