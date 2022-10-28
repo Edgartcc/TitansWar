@@ -13,22 +13,41 @@
 
     <section id="seleccion-titan">
         <h1 class="titulo">Titans War</h1>
-        <h2>Elije tu Titan:</h2>
+        <h2 class="subtitulo">Elije tu Titan:</h2>
 
-        <label class="tarjeta-titan" for="aquaman">Aquaman</label>
-        <input type="radio" name="titan" id="aquaman" />
+        <div class="tarjetas">
+            <label class="tarjeta-titan" for="aquaman">
+                <p>Aquaman</p>
+                <img src="./assets/aquaman.png" alt="aquaman">
+            </label>
+            <input type="radio" name="titan" id="aquaman" />
+    
+            <label class="tarjeta-titan" for="lodin">
+                <p>Lodin</p>
+                <img src="./assets/odin.png" alt="lodin">
+            </label>
+            <input type="radio" name="titan" id="lodin" />
+    
+            <label class="tarjeta-titan" for="carboncillo">
+                <p>Carboncillo</p>
+                <img src="./assets/carboncillo.png" alt="carboncillo">
+            </label>
+            <input type="radio" name="titan" id="carboncillo" />
+    
+            <label class="tarjeta-titan" for="sable">
+                <p>Sable</p>
+                <img src="./assets/sable.png" alt="sable">
+            </label>
+            <input type="radio" name="titan" id="sable" />
+            
+            <label class="tarjeta-titan" for="barrilete">
+                <p>Barrilete</p>
+                <img src="./assets/elder_titan.png" alt="aquaman">
+            </label>
+            <input type="radio" name="titan" id="barrilete" /> 
+        </div>
 
-        <label class="tarjeta-titan" for="lodin">Lodin</label>
-        <input type="radio" name="titan" id="lodin" />
-
-        <label class="tarjeta-titan" for="carboncillo">Carboncillo</label>
-        <input type="radio" name="titan" id="carboncillo" />
-
-        <label class="tarjeta-titan" for="sable">Sable</label>
-        <input type="radio" name="titan" id="sable" />
-        
-        <label class="tarjeta-titan" for="barrilete">Barrilete</label>
-        <input type="radio" name="titan" id="barrilete" /> 
+       
 
         <button id="boton-titan">Seleccionar</button>
 
@@ -46,7 +65,7 @@
     </section>
 
     <section id="ataque">
-        <h1 class="titulo">TitansWar 👹🐍🦐🤺</h1>
+        <h1 class="titulo">Titans War</h1>
         <h2>Elije tu ataque</h2>
 
         <p>Tu Titan <span id="titan-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica -->

@@ -27,23 +27,6 @@ body:before {
 	background-color: rgba(0,0,0,0.6);
 }
 
-
-.titulo {
-    color: white;
-    font-size: 4rem;
-    
-    padding: 10px;
-    margin: 50px;
-    
-    width: 30rem;
-    height: 40px;
-    position: relative;
-}
-h2 {
-    color: white;
-    position: relative;
-}
-
 #seleccion-titan {
     display: flex;
     flex-direction: column;
@@ -53,17 +36,56 @@ h2 {
    
 }
 
+.titulo {
+    color: white;
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    padding: 4rem;
+    position: relative;
+    
+}
+.subtitulo{
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+
+
+.tarjetas {
+    display: flex;
+    gap: 10px;
+}
+
 .tarjeta-titan {
-    width: 10rem;
-    height: 3rem;
-    background-color: skyblue;
-    padding: 400px 100px;
+    width: 15rem;
+    height: 20rem;
+    
+    /* background: linear-gradient(to bottom right, green, white); */
+    /* background: linear-gradient(to bottom, black, white 80%, gray); */
+    /* background: linear-gradient(to right, red, orange, yellow, green, blue); */
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), url(https://img.freepik.com/foto-gratis/fondo-textura-pared-lisa-negra_53876-101843.jpg?w=2000);
+    /* background: radial-gradient(gray, white, rgb(45, 50, 54)); */
     padding: 10px;
     margin: 10px;
     border-radius: 1rem;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     position: relative;
+    color: white;
     
+}
+
+.tarjeta-titan img {
+    width: 80px;
+    margin-top: 3rem;
+    lex-wrap: ;
+}
+
+.tarjeta-titan p {
+    font-size: medium;
 }
 
 #boton-titan {
