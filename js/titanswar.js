@@ -28,7 +28,7 @@ function iniciarJuego() {
 
 function seleccionarTitan() {
     let sectionSeleccionarAtaque = document.getElementById("ataque")
-    sectionSeleccionarAtaque.style.display = "block" // style.display = block me permite volver a ver la seccion en cuestion
+    sectionSeleccionarAtaque.style.display = "flex" // style.display = block me permite volver a ver la seccion en cuestion
 
     let sectionSeleccionarTitan = document.getElementById("seleccion-titan")
     sectionSeleccionarTitan.style.display = "none"
@@ -143,24 +143,36 @@ function revisarVidas() {
 }
 
 function crearMensaje() {
-    let sectionMensajes = document.getElementById("mensajes")
+    let sectionMensajes = document.getElementById("resultado")
+    let ataquesDelJugador = document.getElementById("ataques-del-jugador")
+    let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo")
 
-    let parrafo= document.createElement("p")
-    parrafo.innerHTML = "Tu titan atacó con " + ataqueJugador + ", el titan del enemigo atacó con " + ataqueEnemigo + ", " + resultadocombate //parrafoCombate es la variable para el primer parrafo.
+    
+   
+    let nuevoAtaqueDelJugador= document.createElement("p")
+    let nuevoAtaqueDelEnemigo= document.createElement("p")
+
+    sectionMensajes.innerHTML = resultadocombate
+    nuevoAtaqueDelJugador.innerHTML =  ataqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML =  ataqueEnemigo
+    /* let parrafo= document.createElement("p")
+    parrafo.innerHTML = "Tu titan atacó con " + ataqueJugador + ", el titan del enemigo atacó con " + ataqueEnemigo + ", " + resultadocombate //parrafoCombate es la variable para el primer parrafo. */
 
     
 
-    sectionMensajes.appendChild(parrafo)
+    
+    ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
+    ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
 }
 
 function crearMensajeFinal(resultadoFinal) { 
     let sectionReiniciar = document.getElementById("reiniciar")
     sectionReiniciar.style.display = "block"
 
-    let sectionMensajes = document.getElementById("mensajes")
+    let sectionMensajes = document.getElementById("resultado")
 
     let parrafo= document.createElement("p")
-    parrafo.innerHTML = resultadoFinal
+    sectionMensajes.innerHTML = resultadoFinal
     
     let botonFuego = document.getElementById("boton-fuego")
     botonFuego.disabled = true // Este atributo me permite desabilitar los botones
@@ -169,7 +181,7 @@ function crearMensajeFinal(resultadoFinal) {
     let botonTierra = document.getElementById("boton-tierra")
     botonTierra.disabled = true
 
-    sectionMensajes.appendChild(parrafo)//appendchild me permite mostrar el parrafo creado en mi html
+    /* sectionMensajes.appendChild(parrafo)//appendchild me permite mostrar el parrafo creado en mi html */
 }
 
 function reiniciarJuego() {//location.reload se refiere a la ubicacion en la que nos encontramos ahora, y que nos permite recargar la pagina.

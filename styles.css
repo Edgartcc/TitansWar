@@ -6,27 +6,21 @@
 html {
     font-size: 62.5%;
 }
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 body{
-    font-family: 'Fredoka One', cursive;
-    background-image: url("https://wallpaperaccess.com/full/2937165.jpg");
+    font-family: 'Poppins', sans-serif;
+   
+    background-image: url("./img/background.png");
     background-position:center center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    position: relative;
-    text-align: center;
+    
+    
 }
-body:before {
-    content:'';
-	position: absolute;
-    top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background-color: rgba(0,0,0,0.6);
-}
+
 
 #seleccion-titan {
     display: flex;
@@ -34,74 +28,118 @@ body:before {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    position: relative;
+    
    
 }
 
+
+
 .titulo {
     color: white;
-    font-size: 4rem;
-    margin-bottom: 4rem;
+    font-size: 6rem;
+    margin-bottom: 2rem;
     padding: 4rem;
+    
+    
     
     
 }
 .subtitulo{
     color: white;
-    font-size: 20px;
-    
+    font-size: 2rem;
+    margin-bottom: 4rem;
 }
-
 
 
 .tarjetas {
     display: flex;
-    gap: 10px;
-    
+    gap: 10px; 
 }
 
 .tarjeta-titan {
-    width: 15rem;
-    height: 20rem;
-    
+    width: 25rem;
+    height: 15rem;
+    background-color: rgba(98, 127, 143, 0.4);
     /* background: linear-gradient(to bottom right, green, white); */
-    /* background: linear-gradient(to bottom, black, white 80%, gray); */
+   /*  background: linear-gradient(to bottom, black, white 99%, gray); */
     /* background: linear-gradient(to right, red, orange, yellow, green, blue); */
-    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), url(https://img.freepik.com/foto-gratis/fondo-textura-pared-lisa-negra_53876-101843.jpg?w=2000);
+  /*   background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), url(https://img.freepik.com/foto-gratis/fondo-textura-pared-lisa-negra_53876-101843.jpg?w=2000); */
     /* background: radial-gradient(gray, white, rgb(45, 50, 54)); */
     padding: 10px;
     margin: 10px;
+    border: 2px groove #fff;
     border-radius: 1rem;
     display: flex;
+    
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    
-    color: white;
-    
+             
 }
 
 .tarjeta-titan img {
-    width: 80px;
-    margin-top: 3rem;
+    width: 130px;
+    margin: 0.5rem;
     
 }
 
 .tarjeta-titan p {
-    font-size: medium;
+    font-size: 1.8rem;
+    
+    
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #boton-titan {
-    background: blue;
-    border-radius: 5rem;
+    background: transparent;
+    border-radius: 2rem;
     padding: 1rem 4rem;
     color: white;
-    font-size: 1rem;
-    border: none;
-    box-shadow: 0px 7px 32px -5px rgba(0, 0, 0, 0.7);
+    font-size: 2rem;
+    border: 2px solid white;
+    margin-top: 3rem;
+    
     
 }
 
 input {
-    display: block;
+    display: none;
+}
+
+#ataque {
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton-de-ataque {
+    background-color: rgba(98, 127, 143, 0.4);
+    padding: 10px;
+    margin: 10px;
+    border: 2px groove #fff;
+    border-radius: 2rem;
+    color: white;
+    width: 10rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+#mensajes {
+    width: 28rem;
+    background-color: rgba(22, 168, 246, 0.8);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#boton-reiniciar {
+    border: transparent;
+    color: rgb(0, 48, 90);
+    font-family: 'Poppins', sans-serif;
+    padding: 0.5rem;
+    
+    
+
 }

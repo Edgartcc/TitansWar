@@ -12,7 +12,7 @@
     
 
     <section id="seleccion-titan">
-        <h1 class="titulo">Titans War</h1>
+        <h1 class="titulo">War of Titans</h1>
         <h2 class="subtitulo">Elije tu Titan:</h2>
 
         <div class="tarjetas">
@@ -51,39 +51,43 @@
 
         <button id="boton-titan">Seleccionar</button>
 
-        <section class="image-1" id="background">
-        </section>
         
-        <section class="image-2" id="background">
-        </section>
-        
-        <section class="image-3" id="background">
-        </section>
-        
-        <section class="image-4" id="background">
-        </section>
     </section>
 
     <section id="ataque">
-        <h1 class="titulo">Titans War</h1>
-        <h2>Elije tu ataque</h2>
+        <h1 class="titulo">War of Titans</h1>
 
-        <p>Tu Titan <span id="titan-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica -->
-        <p>El Titan <span id="titan-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
-        <p>
-            <button id="boton-fuego">Fuego 🔥</button>
-            <button id="boton-agua">Agua 💦</button>
-            <button id="boton-tierra">Tierra 🌱</button>
-        </p>
-    </section>
+        <h2 class="subtitulo">Elije tu ataque:</h2>
 
-    <section id="mensajes">
+        <div>
+            <button id="boton-fuego" class="boton-de-ataque">Fuego 🔥</button>
+            <button id="boton-agua" class="boton-de-ataque">Agua 💦</button>
+            <button id="boton-tierra" class="boton-de-ataque">Tierra 🌱</button>
+        </div>
+
+        <div id="mensajes">
+            
+            <p id="resultado">Mucha Suerte!!</p>
+                      
+            <section id="reiniciar">
+                <button id="boton-reiniciar">Reiniciar</button>
+            </section>
+            
+        </div>
+
+        <div>
+            <div id="ataques-del-jugador"></div>
+
+            <div id="ataques-del-enemigo"></div>
+
+            <p>Tu Titan <span id="titan-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica -->
+
+            <p>El Titan <span id="titan-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
+        </div>      
         
     </section>
- 
-    <section id="reiniciar">
-        <button id="boton-reiniciar">Reiniciar</button>
-    </section>
+
+    
     
     
 </body>
