@@ -19,15 +19,17 @@ body{
     background-attachment: fixed;
     
     
+    
 }
 
 
 #seleccion-titan {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
     align-items: center;
-    height: 100vh;
+    
+    height: fit-content;
     
    
 }
@@ -38,11 +40,7 @@ body{
     color: white;
     font-size: 6rem;
     margin-bottom: 2rem;
-    padding: 4rem;
-    
-    
-    
-    
+    padding: 4rem; 
 }
 .subtitulo{
     color: white;
@@ -51,9 +49,9 @@ body{
 }
 
 
-.tarjetas {
+.tarjetas, .tarjetas-ataque {
     display: flex;
-    gap: 10px; 
+    gap: 1rem; 
 }
 
 .tarjeta-titan {
@@ -65,19 +63,18 @@ body{
     /* background: linear-gradient(to right, red, orange, yellow, green, blue); */
   /*   background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), url(https://img.freepik.com/foto-gratis/fondo-textura-pared-lisa-negra_53876-101843.jpg?w=2000); */
     /* background: radial-gradient(gray, white, rgb(45, 50, 54)); */
-    padding: 10px;
-    margin: 10px;
-    border: 2px groove #fff;
-    border-radius: 1rem;
-    display: flex;
-    
+    padding: 1rem;
+    margin: 1rem;
+    border: 0.2rem groove #fff;
+    border-radius: 1rem;   
     justify-content: center;
     align-items: center;
+    display: flex;
              
 }
 
 .tarjeta-titan img {
-    width: 130px;
+    width: 13rem;
     margin: 0.5rem;
     
 }
@@ -96,7 +93,7 @@ body{
     padding: 1rem 4rem;
     color: white;
     font-size: 2rem;
-    border: 2px solid white;
+    border: 0.2rem solid white;
     margin-top: 3rem;
     
     
@@ -106,6 +103,10 @@ input {
     display: none;
 }
 
+input:checked + label {
+    background-color: rgba(3, 61, 252, 0.6);
+}
+
 #ataque {
     flex-direction: column;
     align-items: center;
@@ -113,9 +114,9 @@ input {
 
 .boton-de-ataque {
     background-color: rgba(98, 127, 143, 0.4);
-    padding: 10px;
-    margin: 10px;
-    border: 2px groove #fff;
+    padding: 1rem;
+    margin: 1rem;
+    border: 0.2rem groove #fff;
     border-radius: 2rem;
     color: white;
     width: 10rem;
@@ -143,3 +144,37 @@ input {
     
 
 }
+
+.ataques {
+    display: grid;
+    grid-template-columns: 10rem 10rem;
+    text-align: center;
+    background-color: rgba(169, 212, 236, 0.8);
+    margin-top: 2rem;
+    padding: 2rem;
+}
+
+#vidas-jugador, #vidas-enemigo {
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+
+.ataques-jugador, .ataques-enemigo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+@media (max-width: 450px) {
+    .tarjetas {
+        flex-direction: column;
+         
+    }
+    .tarjetas-ataque {
+        flex-direction: column;
+    }
+}
+    
+

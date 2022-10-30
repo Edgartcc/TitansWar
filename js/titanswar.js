@@ -38,19 +38,19 @@ function seleccionarTitan() {
     let inputCarboncillo = document.getElementById("carboncillo")
     let inputSable = document.getElementById("sable")
     let inputBarrilete = document.getElementById("barrilete")
-    let mascotaJugador = document.getElementById("mascota-jugador")
+    let titanJugador = document.getElementById("titan-jugador")
     
 
     if (inputAquaman.checked) {
-       mascotaJugador.innerHTML = "Aquaman"
+       titanJugador.innerHTML = "Aquaman"
     } else if (inputLodin.checked) {
-        mascotaJugador.innerHTML = "Lodin"
+        titanJugador.innerHTML = "Lodin"
     } else if (inputCarboncillo.checked) {
-        mascotaJugador.innerHTML = "Carboncillo"
+        titanJugador.innerHTML = "Carboncillo"
     } else if (inputSable.checked) {
-        mascotaJugador.innerHTML = "Sable"
+        titanJugador.innerHTML = "Sable"
     } else if (inputBarrilete.checked) {
-        mascotaJugador.innerHTML = "Barrilete"
+        titanJugador.innerHTML = "Barrilete"
     } else {
         alert("Te falta seleccionar mi brother")
     }

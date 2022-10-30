@@ -12,39 +12,40 @@
     
 
     <section id="seleccion-titan">
-        <h1 class="titulo">War of Titans</h1>
+        <h1 class="titulo">TitansWar</h1>
         <h2 class="subtitulo">Elije tu Titan:</h2>
 
         <div class="tarjetas">
+            <input type="radio" name="titan" id="aquaman" />
             <label class="tarjeta-titan" for="aquaman">
                 <p>Aquaman</p>
                 <img src="./assets/aquaman.png" alt="aquaman">
             </label>
-            <input type="radio" name="titan" id="aquaman" />
-    
+           
+            <input type="radio" name="titan" id="lodin" />
             <label class="tarjeta-titan" for="lodin">
                 <p>Lodin</p>
                 <img src="./assets/odin.png" alt="lodin">
             </label>
-            <input type="radio" name="titan" id="lodin" />
-    
+            
+            <input type="radio" name="titan" id="carboncillo" />
             <label class="tarjeta-titan" for="carboncillo">
                 <p>Carboncillo</p>
                 <img src="./assets/carboncillo.png" alt="carboncillo">
             </label>
-            <input type="radio" name="titan" id="carboncillo" />
-    
+            
+            <input type="radio" name="titan" id="sable" />
             <label class="tarjeta-titan" for="sable">
                 <p>Sable</p>
                 <img src="./assets/sable.png" alt="sable">
             </label>
-            <input type="radio" name="titan" id="sable" />
             
+            <input type="radio" name="titan" id="barrilete" /> 
             <label class="tarjeta-titan" for="barrilete">
                 <p>Barrilete</p>
                 <img src="./assets/elder_titan.png" alt="aquaman">
             </label>
-            <input type="radio" name="titan" id="barrilete" /> 
+            
         </div>
 
        
@@ -55,11 +56,11 @@
     </section>
 
     <section id="ataque">
-        <h1 class="titulo">War of Titans</h1>
+        <h1 class="titulo">TitansWar</h1>
 
         <h2 class="subtitulo">Elije tu ataque:</h2>
 
-        <div>
+        <div class="tarjetas-ataque">
             <button id="boton-fuego" class="boton-de-ataque">Fuego 🔥</button>
             <button id="boton-agua" class="boton-de-ataque">Agua 💦</button>
             <button id="boton-tierra" class="boton-de-ataque">Tierra 🌱</button>
@@ -75,14 +76,20 @@
             
         </div>
 
-        <div>
-            <div id="ataques-del-jugador"></div>
-
-            <div id="ataques-del-enemigo"></div>
-
-            <p>Tu Titan <span id="titan-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica -->
-
-            <p>El Titan <span id="titan-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
+        <div class="ataques">
+            <div class="ataques-jugador">
+                <p id="vidas-jugador">3</p>
+                <p id="titan-jugador"></p>
+                <div id="ataques-del-jugador"></div>
+                <!-- <p>Tu Titan  tiene  vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica --> 
+            </div>
+            <div class="ataques-enemigo">
+                <p id="vidas-enemigo">3</p>
+                <p id="titan-enemigo"></p>
+                <div id="ataques-del-enemigo"></div>
+                <!-- <p>El Titan  del enemigo tiene  vidas</p> -->
+            </div>
+            
         </div>      
         
     </section>
