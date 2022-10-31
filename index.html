@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TitansWar</title>
-    <script src="./js/titanswar.js"></script>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -68,25 +67,35 @@
 
         <div id="mensajes">
             
-            <p id="resultado">Mucha Suerte!!</p>
+            <p id="resultado">Inicia la Batalla, Suerte!</p>
                       
             <section id="reiniciar">
-                <button id="boton-reiniciar">Reiniciar</button>
+                <button id="boton-reiniciar">Start again</button>
             </section>
             
         </div>
 
         <div class="ataques">
             <div class="ataques-jugador">
+                
                 <p id="vidas-jugador">3</p>
-                <p id="titan-jugador"></p>
-                <div id="ataques-del-jugador"></div>
+                <div class="titulo-titan">
+                    
+                    <p id="titan-jugador"></p>
+                 <div id="ataques-del-jugador"></div>
+                </div>
+                
                 <!-- <p>Tu Titan  tiene  vidas</p><!-- Colocamos span para hacer esa parte del codigo dinamica --> 
             </div>
             <div class="ataques-enemigo">
+                
                 <p id="vidas-enemigo">3</p>
-                <p id="titan-enemigo"></p>
-                <div id="ataques-del-enemigo"></div>
+                <div class="titulo-titan-enemigo">
+                    
+                    <p id="titan-enemigo"></p>
+                    <div id="ataques-del-enemigo"></div>
+                </div>
+                
                 <!-- <p>El Titan  del enemigo tiene  vidas</p> -->
             </div>
             
@@ -96,6 +105,6 @@
 
     
     
-    
+    <script src="./js/titanswar.js"></script>
 </body>
 </html>

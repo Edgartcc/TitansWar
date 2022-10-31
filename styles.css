@@ -132,7 +132,24 @@ input:checked + label {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
     
+}
+#mensajes p {
+    margin-bottom: 2rem;
+}
+
+#mensajes button {
+    background-color: rgba(98, 127, 143, 0.4);
+    padding: 1rem;
+    margin: 1rem;
+    border: 0.2rem groove #fff;
+    border-radius: 2rem;
+    color: white;
+    width: 10rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 #boton-reiniciar {
@@ -147,9 +164,9 @@ input:checked + label {
 
 .ataques {
     display: grid;
-    grid-template-columns: 10rem 10rem;
+    grid-template-columns: 15rem 15rem;
     text-align: center;
-    background-color: rgba(169, 212, 236, 0.8);
+    
     margin-top: 2rem;
     padding: 2rem;
 }
@@ -157,12 +174,30 @@ input:checked + label {
 #vidas-jugador, #vidas-enemigo {
     font-size: 3.2rem;
     margin-bottom: 1rem;
+    padding: 2rem 4rem;
+    
+    
+    font-weight: bold;
+    background-color: rgba(98, 127, 143, 0.6);
+    border-radius: 1rem;
+    color: white;
 }
 
 .ataques-jugador, .ataques-enemigo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    color: #fff;
+}
+
+.titulo-titan, .titulo-titan-enemigo {
+    padding: 1rem;
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    background-color: rgba(22, 168, 246, 0.8);
+    border-radius: 1rem;
+    color: white;
 }
 
 
@@ -174,6 +209,9 @@ input:checked + label {
     }
     .tarjetas-ataque {
         flex-direction: column;
+    }
+    body {
+        background-image: url("./img/wallpaper.png");
     }
 }
     

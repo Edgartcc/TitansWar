@@ -135,9 +135,9 @@ function combate() {
 
 function revisarVidas() { 
     if (vidasEnemigo == 0) {
-        crearMensajeFinal("FELICITACIONES!!, GANASTE LA PARTIDA🏋️🏋️")
+        crearMensajeFinal("Felicitaciones, eres el ganador!")
     } else if (vidasJugador == 0) {
-        crearMensajeFinal("SORRY MY FRIEND, PERDISTE LA PARTIDA🥲🥲")
+        crearMensajeFinal("Perdiste la partida, lo siento mucho!")
     }
     
 }
