@@ -33,24 +33,24 @@ function seleccionarTitan() {
     let sectionSeleccionarTitan = document.getElementById("seleccion-titan")
     sectionSeleccionarTitan.style.display = "none"
 
-    let inputAquaman = document.getElementById("aquaman")
-    let inputLodin = document.getElementById("lodin")
-    let inputCarboncillo = document.getElementById("carboncillo")
-    let inputSable = document.getElementById("sable")
-    let inputBarrilete = document.getElementById("barrilete")
+    let inputAquaman = document.getElementById("femenina")
+    let inputLodin = document.getElementById("tataque")
+    let inputCarboncillo = document.getElementById("acorazado")
+    let inputSable = document.getElementById("bestia")
+    let inputBarrilete = document.getElementById("colosal")
     let titanJugador = document.getElementById("titan-jugador")
     
 
     if (inputAquaman.checked) {
-       titanJugador.innerHTML = "Aquaman"
+       titanJugador.innerHTML = "Femenina"
     } else if (inputLodin.checked) {
-        titanJugador.innerHTML = "Lodin"
+        titanJugador.innerHTML = "Ataque"
     } else if (inputCarboncillo.checked) {
-        titanJugador.innerHTML = "Carboncillo"
+        titanJugador.innerHTML = "Acorazado"
     } else if (inputSable.checked) {
-        titanJugador.innerHTML = "Sable"
+        titanJugador.innerHTML = "Bestia"
     } else if (inputBarrilete.checked) {
-        titanJugador.innerHTML = "Barrilete"
+        titanJugador.innerHTML = "Colosal"
     } else {
         alert("Te falta seleccionar mi brother")
     }
@@ -64,32 +64,32 @@ function seleccionarTitanEnemigo() {
     let titanEnemigo = document.getElementById("titan-enemigo")
 
     if (titanAleatorio == 1) {
-        titanEnemigo.innerHTML = "Aquaman" //Aquaman
+        titanEnemigo.innerHTML = "Femenina" //Aquaman
     } else if (titanAleatorio == 2) {
-        titanEnemigo.innerHTML = "Lodin"//Lodin
+        titanEnemigo.innerHTML = "Ataque"//Lodin
     } else if (titanAleatorio == 3) {
-        titanEnemigo.innerHTML = "Carboncillo"
+        titanEnemigo.innerHTML = "Acorazado"
     } else if (titanAleatorio == 4) {
-        titanEnemigo.innerHTML = "Sable"
+        titanEnemigo.innerHTML = "Bestia"
     } else {
-        titanEnemigo.innerHTML = "Barrilete"
+        titanEnemigo.innerHTML = "Colosal"
     }
 }
 
 function ataqueFuego() {
-    ataqueJugador = "FUEGO"
+    ataqueJugador = "BOLA DE FUEGO"
     ataqueAleatorioEnemigo()
     
 }
 
 function ataqueAgua() {
-    ataqueJugador = "AGUA"
+    ataqueJugador = "ESQUILA DE HIELO"
     ataqueAleatorioEnemigo()
     
 }
 
 function ataqueTierra() {
-    ataqueJugador = "TIERRA"
+    ataqueJugador = "TERREMOTO"
     ataqueAleatorioEnemigo()
     
 }
@@ -100,11 +100,11 @@ function ataqueAleatorioEnemigo() {
     let  ataqueAleatorio = aleatorio(1,3)
     
     if (ataqueAleatorio == 1) {
-        ataqueEnemigo = "FUEGO"
+        ataqueEnemigo = "BOLA DE FUEGO"
     } else if (ataqueAleatorio == 2) {
-        ataqueEnemigo = "AGUA"
+        ataqueEnemigo = "ESQUILA DE HIELO"
     } else {
-        ataqueEnemigo = "TIERRA"
+        ataqueEnemigo = "TERREMOTO"
     }
 
     combate()
@@ -117,7 +117,7 @@ function combate() {
 
     if(ataqueJugador == ataqueEnemigo) {
         resultadocombate = "¡Empate! 😑"
-    } else if((ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") || (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") || (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA")) {
+    } else if((ataqueJugador == "BOLA DE FUEGO" && ataqueEnemigo == "TERREMOTO") || (ataqueJugador == "ESQUILA DE HIELO" && ataqueEnemigo == "BOLA DE FUEGO") || (ataqueJugador == "TERREMOTO" && ataqueEnemigo == "ESQUILA DE HIELO")) {
         resultadocombate = "¡Ganaste! 😀🏋️"
         vidasEnemigo--
         spanVidasEnemigo.innerHTML = vidasEnemigo

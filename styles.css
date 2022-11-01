@@ -52,7 +52,13 @@ body{
 .tarjetas, .tarjetas-ataque {
     display: flex;
     gap: 1rem; 
+    flex-wrap: wrap;
+    justify-content: center;
+    
 }
+/* .tarjetas-ataque {
+    width: 8rem;
+} */
 
 .tarjeta-titan {
     width: 25rem;
@@ -114,18 +120,18 @@ input:checked + label {
 
 .boton-de-ataque {
     background-color: rgba(98, 127, 143, 0.4);
-    padding: 1rem;
+    padding: 1.2rem;
     margin: 1rem;
     border: 0.2rem groove #fff;
     border-radius: 2rem;
     color: white;
-    width: 10rem;
+    width: 16rem;
     font-family: 'Poppins', sans-serif;
 }
 
 #mensajes {
     width: 28rem;
-    background-color: rgba(22, 168, 246, 0.8);
+    background-color: rgba(22, 168, 246, 0.7);
     padding: 2rem;
     margin-top: 2rem;
     border-radius: 2rem;
@@ -191,14 +197,25 @@ input:checked + label {
     color: #fff;
 }
 
-.titulo-titan, .titulo-titan-enemigo {
+#titan-jugador, #titan-enemigo {
     padding: 1rem;
     margin: 0.5rem;
     font-size: 1.5rem;
-    background-color: rgba(22, 168, 246, 0.8);
+    background-color: rgba(22, 168, 246, 0.7);
     border-radius: 1rem;
     color: white;
 }
+#ataques-del-jugador, #ataques-del-enemigo {
+    background-color: rgba(22, 168, 246, 0.7);
+    color: #fff;
+    width: 10rem;
+}
+#ataques-del-jugador p, #ataques-del-enemigo p {
+    font-weight: bold;
+    margin: 0.5rem;
+    font-style: oblique;
+}
+
 
 
 
