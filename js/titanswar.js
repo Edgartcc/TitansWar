@@ -7,11 +7,7 @@ const botonTierra = document.getElementById("boton-tierra")
 const botonReiniciar = document.getElementById("boton-reiniciar")
 
 const sectionSeleccionarTitan = document.getElementById("seleccion-titan")
-const inputFemenina = document.getElementById("femenina")
-const inputAtaque = document.getElementById("tataque")
-const inputAcorazado = document.getElementById("acorazado")
-const inputBestia = document.getElementById("bestia")
-const inputColosal = document.getElementById("colosal")
+
 const titanJugador = document.getElementById("titan-jugador")
 
 const titanEnemigo = document.getElementById("titan-enemigo")
@@ -29,6 +25,11 @@ let titanes = []//para arrays arreglos
 let ataqueJugador
 let ataqueEnemigo
 let opcionDeTitanes
+let inputFemenina
+let inputAtaque
+let inputAcorazado
+let inputBestia
+let inputColosal
 
 let vidasJugador = 3
 let vidasEnemigo = 3
@@ -101,6 +102,13 @@ function iniciarJuego() {
         `
 
     contenedorTarjetas.innerHTML += opcionDeTitanes
+
+    inputFemenina = document.getElementById("Femenina")
+    inputAtaque = document.getElementById("Ataque")
+    inputAcorazado = document.getElementById("Acorazado")
+    inputBestia = document.getElementById("Bestia")
+    inputColosal = document.getElementById("Colosal")
+
     })
 
     botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
