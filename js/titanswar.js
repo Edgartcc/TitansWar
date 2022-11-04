@@ -1,55 +1,112 @@
+const sectionSeleccionarAtaque = document.getElementById("ataque")
+const sectionReiniciar = document.getElementById("reiniciar")
+const botonTitan = document.getElementById("boton-titan")
+const botonFuego = document.getElementById("boton-fuego")
+const botonAgua = document.getElementById("boton-agua")
+const botonTierra = document.getElementById("boton-tierra")
+const botonReiniciar = document.getElementById("boton-reiniciar")
+
+const sectionSeleccionarTitan = document.getElementById("seleccion-titan")
+const inputFemenina = document.getElementById("femenina")
+const inputAtaque = document.getElementById("tataque")
+const inputAcorazado = document.getElementById("acorazado")
+const inputBestia = document.getElementById("bestia")
+const inputColosal = document.getElementById("colosal")
+const titanJugador = document.getElementById("titan-jugador")
+
+const titanEnemigo = document.getElementById("titan-enemigo")
+
+const spanVidasJugador = document.getElementById("vidas-jugador")
+const spanVidasEnemigo = document.getElementById("vidas-enemigo")
+
+const sectionMensajes = document.getElementById("resultado")
+const ataquesDelJugador = document.getElementById("ataques-del-jugador")
+const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo")
+
+let titanes = []//para arrays arreglos
+
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
 
+class TitansWar {//Los nombres de las clases siempre inician con mayuscula a difeirecia de las variables
+    constructor(nombre, foto, vida) {
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+        this.ataques = []
+    }
+}
+
+let femenina = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 5)
+let tataque = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5)
+let acorazado = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5)
+let bestia = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5)
+let colosal = new TitansWar("colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5)
+
+femenina.ataques.push(
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🧊", id: "boton-agua" },
+)
+tataque.ataques.push(
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🧊", id: "boton-agua" },
+)
+acorazado.ataques.push(
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+)
+bestia.ataques.push(
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🧊", id: "boton-agua" },
+)
+colosal.ataques.push(
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+)
+
+
 function iniciarJuego() {
-    let sectionSeleccionarAtaque = document.getElementById("ataque")
-    sectionSeleccionarAtaque.style.display = "none" //style.display none me permite ocultar la seccion en cuestion.
-
-    let sectionReiniciar = document.getElementById("reiniciar")
-    sectionReiniciar.style.display = "none"
-
-    let botonTitan = document.getElementById("boton-titan")
-    botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido
-
-    let botonFuego = document.getElementById("boton-fuego")
-    botonFuego.addEventListener("click", ataqueFuego)
-
-    let botonAgua = document.getElementById("boton-agua")
-    botonAgua.addEventListener("click", ataqueAgua)
-
-    let botonTierra = document.getElementById("boton-tierra")
-    botonTierra.addEventListener("click", ataqueTierra)
-
-    let botonReiniciar = document.getElementById("boton-reiniciar")
+    
+    sectionSeleccionarAtaque.style.display = "none" //style.display none me permite ocultar la seccion en cuestion.  
+    sectionReiniciar.style.display = "none"  
+    botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
+    botonFuego.addEventListener("click", ataqueFuego)   
+    botonAgua.addEventListener("click", ataqueAgua)   
+    botonTierra.addEventListener("click", ataqueTierra)   
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
 function seleccionarTitan() {
-    let sectionSeleccionarAtaque = document.getElementById("ataque")
-    sectionSeleccionarAtaque.style.display = "flex" // style.display = block me permite volver a ver la seccion en cuestion
-
-    let sectionSeleccionarTitan = document.getElementById("seleccion-titan")
-    sectionSeleccionarTitan.style.display = "none"
-
-    let inputAquaman = document.getElementById("femenina")
-    let inputLodin = document.getElementById("tataque")
-    let inputCarboncillo = document.getElementById("acorazado")
-    let inputSable = document.getElementById("bestia")
-    let inputBarrilete = document.getElementById("colosal")
-    let titanJugador = document.getElementById("titan-jugador")
     
-
-    if (inputAquaman.checked) {
+    sectionSeleccionarAtaque.style.display = "flex" // style.display = block me permite volver a ver la seccion en cuestion   
+    sectionSeleccionarTitan.style.display = "none" 
+    
+    if (inputFemenina.checked) {
        titanJugador.innerHTML = "Femenina"
-    } else if (inputLodin.checked) {
+    } else if (inputAtaque.checked) {
         titanJugador.innerHTML = "Ataque"
-    } else if (inputCarboncillo.checked) {
+    } else if (inputAcorazado.checked) {
         titanJugador.innerHTML = "Acorazado"
-    } else if (inputSable.checked) {
+    } else if (inputBestia.checked) {
         titanJugador.innerHTML = "Bestia"
-    } else if (inputBarrilete.checked) {
+    } else if (inputColosal.checked) {
         titanJugador.innerHTML = "Colosal"
     } else {
         alert("Te falta seleccionar mi brother")
@@ -61,7 +118,6 @@ function seleccionarTitan() {
 
 function seleccionarTitanEnemigo() {
     let titanAleatorio = aleatorio(1,5)
-    let titanEnemigo = document.getElementById("titan-enemigo")
 
     if (titanAleatorio == 1) {
         titanEnemigo.innerHTML = "Femenina" //Aquaman
@@ -79,22 +135,17 @@ function seleccionarTitanEnemigo() {
 function ataqueFuego() {
     ataqueJugador = "BOLA DE FUEGO"
     ataqueAleatorioEnemigo()
-    
 }
 
 function ataqueAgua() {
     ataqueJugador = "ESQUILA DE HIELO"
     ataqueAleatorioEnemigo()
-    
 }
 
 function ataqueTierra() {
     ataqueJugador = "TERREMOTO"
-    ataqueAleatorioEnemigo()
-    
+    ataqueAleatorioEnemigo()   
 }
-
-
 
 function ataqueAleatorioEnemigo() {
     let  ataqueAleatorio = aleatorio(1,3)
@@ -108,12 +159,10 @@ function ataqueAleatorioEnemigo() {
     }
 
     combate()
-
 }
 
 function combate() {
-    let spanVidasJugador = document.getElementById("vidas-jugador")
-    let spanVidasEnemigo = document.getElementById("vidas-enemigo")
+    
 
     if(ataqueJugador == ataqueEnemigo) {
         resultadocombate = "¡Empate! 😑"
@@ -143,14 +192,12 @@ function revisarVidas() {
 }
 
 function crearMensaje() {
-    let sectionMensajes = document.getElementById("resultado")
-    let ataquesDelJugador = document.getElementById("ataques-del-jugador")
-    let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo")
+    
 
     
    
     let nuevoAtaqueDelJugador= document.createElement("p")
-    let nuevoAtaqueDelEnemigo= document.createElement("p")
+    let nuevoAtaqueDelEnemigo= document.createElement("p")//estas variables pueden quedarse pues forman parte espscifica de esta funcion al manipular el DOM
 
     sectionMensajes.innerHTML = resultadocombate
     nuevoAtaqueDelJugador.innerHTML =  ataqueJugador
@@ -166,19 +213,12 @@ function crearMensaje() {
 }
 
 function crearMensajeFinal(resultadoFinal) { 
-    let sectionReiniciar = document.getElementById("reiniciar")
-    sectionReiniciar.style.display = "block"
-
-    let sectionMensajes = document.getElementById("resultado")
-
+    
+    sectionReiniciar.style.display = "block"  
     let parrafo= document.createElement("p")
     sectionMensajes.innerHTML = resultadoFinal
-    
-    let botonFuego = document.getElementById("boton-fuego")
     botonFuego.disabled = true // Este atributo me permite desabilitar los botones
-    let botonAgua = document.getElementById("boton-agua")
-    botonAgua.disabled = true
-    let botonTierra = document.getElementById("boton-tierra")
+    botonAgua.disabled = true 
     botonTierra.disabled = true
 
     /* sectionMensajes.appendChild(parrafo)//appendchild me permite mostrar el parrafo creado en mi html */
