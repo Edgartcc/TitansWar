@@ -22,11 +22,14 @@ const spanVidasEnemigo = document.getElementById("vidas-enemigo")
 const sectionMensajes = document.getElementById("resultado")
 const ataquesDelJugador = document.getElementById("ataques-del-jugador")
 const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo")
+const contenedorTarjetas = document.getElementById("contenedorTarjetas")
 
 let titanes = []//para arrays arreglos
 
 let ataqueJugador
 let ataqueEnemigo
+let opcionDeTitanes
+
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -43,7 +46,7 @@ let femenina = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6
 let tataque = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5)
 let acorazado = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5)
 let bestia = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5)
-let colosal = new TitansWar("colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5)
+let colosal = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5)
 
 femenina.ataques.push(
     { nombre:"🔥", id: "boton-fuego" },
@@ -81,11 +84,25 @@ colosal.ataques.push(
     { nombre:"🔥", id: "boton-fuego" },
 )
 
+titanes.push(femenina, tataque, acorazado, bestia, colosal)
 
 function iniciarJuego() {
     
     sectionSeleccionarAtaque.style.display = "none" //style.display none me permite ocultar la seccion en cuestion.  
-    sectionReiniciar.style.display = "none"  
+    sectionReiniciar.style.display = "none" 
+    
+    titanes.forEach((titan) =>{
+        opcionDeTitanes = `
+        <input type="radio" name="titan" id=${titan.nombre} />
+        <label class="tarjeta-titan" for=${titan.nombre} >
+            <p>${titan.nombre} </p>
+            <img src=${titan.foto}  alt=${titan.nombre} >
+        </label>
+        `
+
+    contenedorTarjetas.innerHTML += opcionDeTitanes
+    })
+
     botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
     botonFuego.addEventListener("click", ataqueFuego)   
     botonAgua.addEventListener("click", ataqueAgua)   
