@@ -1,10 +1,7 @@
-const sectionSeleccionarAtaque = document.getElementById("ataque")
+const sectionSeleccionarAtaque = document.getElementById("ataque-titan")
 const sectionReiniciar = document.getElementById("reiniciar")
 const botonTitan = document.getElementById("boton-titan")
-const botonFuego = document.getElementById("boton-fuego")
-const botonAgua = document.getElementById("boton-agua")
-const botonTierra = document.getElementById("boton-tierra")
-const botonReiniciar = document.getElementById("boton-reiniciar")
+
 
 const sectionSeleccionarTitan = document.getElementById("seleccion-titan")
 
@@ -15,22 +12,41 @@ const titanEnemigo = document.getElementById("titan-enemigo")
 const spanVidasJugador = document.getElementById("vidas-jugador")
 const spanVidasEnemigo = document.getElementById("vidas-enemigo")
 
+const botonReiniciar= document.getElementById("boton-reiniciar")
+
 const sectionMensajes = document.getElementById("resultado")
 const ataquesDelJugador = document.getElementById("ataques-del-jugador")
 const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo")
 const contenedorTarjetas = document.getElementById("contenedorTarjetas")
 
+const contenedorAtaques = document.getElementById(`contenedorAtaques`)
+
 let titanes = []//para arrays arreglos
 
-let ataqueJugador
-let ataqueEnemigo
+let ataqueJugador = []
+let ataqueEnemigo = []
 let opcionDeTitanes
 let inputFemenina
 let inputAtaque
 let inputAcorazado
 let inputBestia
 let inputColosal
+let titanesJugador
+let ataquesTitan
+let ataquesTitanEnemigo
+let botones = []
+let indexAtaqueJugador
+let indexAtaqueEnemigo
 
+
+
+
+let botonFuego
+let botonAgua
+let botonTierra
+
+let victoriasJugador = 0
+let victoriasEnemigo = 0
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -44,7 +60,7 @@ class TitansWar {//Los nombres de las clases siempre inician con mayuscula a dif
 }
 
 let femenina = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 5)
-let tataque = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5)
+let ataque = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5)
 let acorazado = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5)
 let bestia = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5)
 let colosal = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5)
@@ -56,7 +72,7 @@ femenina.ataques.push(
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🧊", id: "boton-agua" },
 )
-tataque.ataques.push(
+ataque.ataques.push(
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🌱", id: "boton-tierra" },
@@ -85,7 +101,7 @@ colosal.ataques.push(
     { nombre:"🔥", id: "boton-fuego" },
 )
 
-titanes.push(femenina, tataque, acorazado, bestia, colosal)
+titanes.push(femenina, ataque, acorazado, bestia, colosal)
 
 function iniciarJuego() {
     
@@ -112,9 +128,7 @@ function iniciarJuego() {
     })
 
     botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
-    botonFuego.addEventListener("click", ataqueFuego)   
-    botonAgua.addEventListener("click", ataqueAgua)   
-    botonTierra.addEventListener("click", ataqueTierra)   
+    
     botonReiniciar.addEventListener("click", reiniciarJuego)
 }
 
@@ -124,99 +138,161 @@ function seleccionarTitan() {
     sectionSeleccionarTitan.style.display = "none" 
     
     if (inputFemenina.checked) {
-       titanJugador.innerHTML = "Femenina"
+       titanJugador.innerHTML = inputFemenina.id
+       titanesJugador = inputFemenina.id
     } else if (inputAtaque.checked) {
-        titanJugador.innerHTML = "Ataque"
+        titanJugador.innerHTML = inputAtaque.id
+        titanesJugador = inputAtaque.id
     } else if (inputAcorazado.checked) {
-        titanJugador.innerHTML = "Acorazado"
+        titanJugador.innerHTML = inputAcorazado.id
+        titanesJugador = inputAcorazado.id
     } else if (inputBestia.checked) {
-        titanJugador.innerHTML = "Bestia"
+        titanJugador.innerHTML = inputBestia.id
+        titanesJugador = inputBestia.id
     } else if (inputColosal.checked) {
-        titanJugador.innerHTML = "Colosal"
+        titanJugador.innerHTML = inputColosal.id
+        titanesJugador = inputColosal.id
     } else {
         alert("Te falta seleccionar mi brother")
     }
     
+    extraerAtaques(titanesJugador)
     seleccionarTitanEnemigo()
     
 }
 
-function seleccionarTitanEnemigo() {
-    let titanAleatorio = aleatorio(1,5)
-
-    if (titanAleatorio == 1) {
-        titanEnemigo.innerHTML = "Femenina" //Aquaman
-    } else if (titanAleatorio == 2) {
-        titanEnemigo.innerHTML = "Ataque"//Lodin
-    } else if (titanAleatorio == 3) {
-        titanEnemigo.innerHTML = "Acorazado"
-    } else if (titanAleatorio == 4) {
-        titanEnemigo.innerHTML = "Bestia"
-    } else {
-        titanEnemigo.innerHTML = "Colosal"
+function extraerAtaques(titanesJugador) {
+    let ataques
+    for (let i = 0; i < titanes.length; i++) {
+        if (titanesJugador === titanes[i].nombre) {
+            ataques = titanes[i].ataques
+        }
+        
     }
+    mostrarAtaques(ataques)
 }
 
-function ataqueFuego() {
-    ataqueJugador = "BOLA DE FUEGO"
-    ataqueAleatorioEnemigo()
+function mostrarAtaques(ataques) {
+    ataques.forEach(ataque => {
+        ataquesTitan = `
+        <button id=${ataque.id} class="boton-de-ataque BAtaque">${ataque.nombre}</button>
+        `
+        contenedorAtaques.innerHTML += ataquesTitan
+         
+    });
+    botonFuego = document.getElementById("boton-fuego")
+    botonAgua = document.getElementById("boton-agua")
+    botonTierra = document.getElementById("boton-tierra")
+    botones = document.querySelectorAll('.BAtaque')
+    
+     
+
+
 }
 
-function ataqueAgua() {
-    ataqueJugador = "ESQUILA DE HIELO"
-    ataqueAleatorioEnemigo()
+function secuenciaAtaque() {
+    botones.forEach((boton) => {
+        boton.addEventListener('click', (e) => {
+            if (e.target.textContent === '🔥') {
+                ataqueJugador.push("Bola de fuego")
+                console.log(ataqueJugador)
+                boton.style.background = '#112F58'
+                boton.disabled = true
+            } else if (e.target.textContent === '🧊') {
+                ataqueJugador.push("Esquila de hielo")
+                console.log(ataqueJugador)
+                boton.style.background = '#112F58'
+                boton.disabled = true
+            } else {
+                ataqueJugador.push("Terremoto")
+                console.log(ataqueJugador)
+                boton.style.background = '#112F58'
+                boton.disabled = true
+            }
+            ataqueAleatorioEnemigo()
+        })
+    })  
+    
 }
 
-function ataqueTierra() {
-    ataqueJugador = "TERREMOTO"
-    ataqueAleatorioEnemigo()   
+function seleccionarTitanEnemigo() {
+    let titanAleatorio = aleatorio(0,titanes.length -1)
+
+    titanEnemigo.innerHTML = titanes[titanAleatorio].nombre
+    ataquesTitanEnemigo = titanes[titanAleatorio].ataques
+    secuenciaAtaque()
+    
 }
+
+
 
 function ataqueAleatorioEnemigo() {
-    let  ataqueAleatorio = aleatorio(1,3)
+    let  ataqueAleatorio = aleatorio(0,ataquesTitanEnemigo.length-1)
     
-    if (ataqueAleatorio == 1) {
-        ataqueEnemigo = "BOLA DE FUEGO"
-    } else if (ataqueAleatorio == 2) {
-        ataqueEnemigo = "ESQUILA DE HIELO"
+    if (ataqueAleatorio == 0 || ataqueAleatorio == 1 ) {
+        ataqueEnemigo.push("Bola de fuego")
+    } else if (ataqueAleatorio == 2 || ataqueAleatorio == 3) {
+        ataqueEnemigo.push("Esquila de hielo")
     } else {
-        ataqueEnemigo = "TERREMOTO"
+        ataqueEnemigo.push("Terremoto")
     }
+    console.log(ataqueEnemigo)
 
-    combate()
+    iniciarPelea()
+}
+
+function iniciarPelea() {
+    if (ataqueJugador.length === 5) {
+        combate()
+    }
+}
+
+function indexAmbosOponentes(jugador, enemigo) {
+    indexAtaqueJugador = ataqueJugador[jugador]
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo]
 }
 
 function combate() {
+
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        if(ataqueJugador[index] === ataqueEnemigo[index]) {
+            indexAmbosOponentes(index, index)
+            crearMensaje("¡Empate! 😑")
+        } else if((ataqueJugador[index] === "Bola de fuego" && ataqueEnemigo[index] === "Terremoto") || (ataqueJugador[index] === "Esquila de hielo" && ataqueEnemigo[index] === "Bola de fuego") || (ataqueJugador[index] === "Terremoto" && ataqueEnemigo[index] === "Esquila de hielo")) {
+            indexAmbosOponentes(index, index)
+            crearMensaje("¡Ganaste! 😀🏋️")
+            victoriasJugador++
+            spanVidasJugador.innerHTML = victoriasJugador
+        } else {
+            indexAmbosOponentes(index, index)
+            crearMensaje("¡Perdiste! 🥲")
+            victoriasEnemigo++
+            spanVidasEnemigo.innerHTML = victoriasEnemigo
+        }
+        
+    }
     
 
-    if(ataqueJugador == ataqueEnemigo) {
-        resultadocombate = "¡Empate! 😑"
-    } else if((ataqueJugador == "BOLA DE FUEGO" && ataqueEnemigo == "TERREMOTO") || (ataqueJugador == "ESQUILA DE HIELO" && ataqueEnemigo == "BOLA DE FUEGO") || (ataqueJugador == "TERREMOTO" && ataqueEnemigo == "ESQUILA DE HIELO")) {
-        resultadocombate = "¡Ganaste! 😀🏋️"
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    } else {
-        resultadocombate = "¡Perdiste! 🥲"
-        vidasJugador--
-        spanVidasJugador.innerHTML = vidasJugador
-    }
+  
 
-    crearMensaje()
+    
 
     //RevisarVidas
     revisarVidas()
 }
 
 function revisarVidas() { 
-    if (vidasEnemigo == 0) {
+    if (victoriasJugador === victoriasEnemigo) {
+        crearMensajeFinal("Esto fue un empate!")
+    } else if (vidasJugador > victoriasEnemigo) {
         crearMensajeFinal("Felicitaciones, eres el ganador!")
-    } else if (vidasJugador == 0) {
+    } else {
         crearMensajeFinal("Perdiste la partida, lo siento mucho!")
     }
     
 }
 
-function crearMensaje() {
+function crearMensaje(resultado) {
     
 
     
@@ -224,9 +300,9 @@ function crearMensaje() {
     let nuevoAtaqueDelJugador= document.createElement("p")
     let nuevoAtaqueDelEnemigo= document.createElement("p")//estas variables pueden quedarse pues forman parte espscifica de esta funcion al manipular el DOM
 
-    sectionMensajes.innerHTML = resultadocombate
-    nuevoAtaqueDelJugador.innerHTML =  ataqueJugador
-    nuevoAtaqueDelEnemigo.innerHTML =  ataqueEnemigo
+    sectionMensajes.innerHTML = resultado
+    nuevoAtaqueDelJugador.innerHTML =  indexAtaqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML =  indexAtaqueEnemigo
     /* let parrafo= document.createElement("p")
     parrafo.innerHTML = "Tu titan atacó con " + ataqueJugador + ", el titan del enemigo atacó con " + ataqueEnemigo + ", " + resultadocombate //parrafoCombate es la variable para el primer parrafo. */
 
@@ -242,9 +318,7 @@ function crearMensajeFinal(resultadoFinal) {
     sectionReiniciar.style.display = "block"  
     let parrafo= document.createElement("p")
     sectionMensajes.innerHTML = resultadoFinal
-    botonFuego.disabled = true // Este atributo me permite desabilitar los botones
-    botonAgua.disabled = true 
-    botonTierra.disabled = true
+   
 
     /* sectionMensajes.appendChild(parrafo)//appendchild me permite mostrar el parrafo creado en mi html */
 }
