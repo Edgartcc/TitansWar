@@ -216,7 +216,15 @@ input:checked + label {
     font-style: oblique;
 }
 
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+#mapa {
+    border: 2px solid white;
+}
 
 
 @media (max-width: 450px) {
