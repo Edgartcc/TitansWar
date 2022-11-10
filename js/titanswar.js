@@ -452,5 +452,7 @@ function obtenerObjetoMascota() {
     }
 }
 
+
+
 window.addEventListener("load", iniciarJuego)
 
