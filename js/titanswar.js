@@ -57,19 +57,30 @@ let vidasEnemigo = 3
 let lienzo = mapa.getContext("2d")
 let intervalo
 let mapaBackground = new Image()
-mapaBackground.src = "./assets/mapa.jpg"
+mapaBackground.src = "./assets/mapa.png"
+let alturaQueBuscamos
+let anchoDelMapa = window.innerWidth -20
+const anchoMaximoDelMapa = 500
+if (anchoDelMapa > anchoMaximoDelMapa) {
+    anchoDelMapa = anchoMaximoDelMapa
+}
+
+alturaQueBuscamos = anchoDelMapa * 600 / 800
+
+mapa.width = anchoDelMapa
+mapa.height = alturaQueBuscamos
 
 
 class TitansWar {//Los nombres de las clases siempre inician con mayuscula a difeirecia de las variables
-    constructor(nombre, foto, vida, fotoMapa, x = 10, y = 10) {
+    constructor(nombre, foto, vida, fotoMapa) {
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
         this.ataques = []
-        this.x = x
-        this.y = y
-        this.ancho = 100
-        this.alto = 100
+        this.ancho = 50
+        this.alto = 50
+        this.x = aleatorio(0, mapa.width - this.ancho)
+        this.y = aleatorio(0, mapa.height - this.alto)       
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
         this.velocidadX = 0
@@ -92,13 +103,20 @@ let acorazado = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d
 let bestia = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5, "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png")
 let colosal = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5, "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png")
 
-let femeninaEnemigos = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 5, "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 500, 700)
-let ataqueEnemigos = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5, "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 700, 500)
-let acorazadoEnemigos = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5, "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png", 600, 450)
-let bestiaEnemigos = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5, "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 450, 600)
-let colosalEnemigos = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5, "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 400, 350)
+let femeninaEnemigos = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 5, "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png")
+let ataqueEnemigos = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5, "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png")
+let acorazadoEnemigos = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5, "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png")
+let bestiaEnemigos = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5, "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png")
+let colosalEnemigos = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5, "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png")
 
 femenina.ataques.push(
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🧊", id: "boton-agua" },
+)
+femeninaEnemigos.ataques.push(
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🔥", id: "boton-fuego" },
@@ -112,7 +130,21 @@ ataque.ataques.push(
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🧊", id: "boton-agua" },
 )
+ataqueEnemigos.ataques.push(
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🧊", id: "boton-agua" },
+)
 acorazado.ataques.push(
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+)
+acorazadoEnemigos.ataques.push(
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🧊", id: "boton-agua" },
@@ -126,6 +158,13 @@ bestia.ataques.push(
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🧊", id: "boton-agua" },
 )
+bestiaEnemigos.ataques.push(
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+    { nombre:"🧊", id: "boton-agua" },
+)
 colosal.ataques.push(
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🧊", id: "boton-agua" },
@@ -133,6 +172,14 @@ colosal.ataques.push(
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🔥", id: "boton-fuego" },
 )
+colosalEnemigos.ataques.push(
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🧊", id: "boton-agua" },
+    { nombre:"🌱", id: "boton-tierra" },
+    { nombre:"🔥", id: "boton-fuego" },
+)
+
 
 titanes.push(femenina, ataque, acorazado, bestia, colosal)
 
@@ -167,7 +214,7 @@ function iniciarJuego() {
 }
 
 function seleccionarTitan() {   
-   // sectionSeleccionarAtaque.style.display = "flex" // style.display = block me permite volver a ver la seccion en cuestion   
+   
     sectionSeleccionarTitan.style.display = "none" 
     
     
@@ -193,7 +240,7 @@ function seleccionarTitan() {
     extraerAtaques(titanesJugador)
     sectionVerMapa.style.display = "flex"
     iniciarMapa()
-    seleccionarTitanEnemigo()
+    
     
 }
 
@@ -251,11 +298,9 @@ function secuenciaAtaque() {
     
 }
 
-function seleccionarTitanEnemigo() {
-    let titanAleatorio = aleatorio(0,titanes.length -1)
-
-    titanEnemigo.innerHTML = titanes[titanAleatorio].nombre
-    ataquesTitanEnemigo = titanes[titanAleatorio].ataques
+function seleccionarTitanEnemigo(enemigo) {
+    titanEnemigo.innerHTML = enemigo.nombre  
+    ataquesTitanEnemigo = enemigo.ataques
     secuenciaAtaque()
     
 }
@@ -414,6 +459,7 @@ function moverAbajo() {
     titanJugadorObjeto.velocidadY = 5
 }
 function detenerMovimiento() {
+
     
     titanJugadorObjeto.velocidadX = 0
     titanJugadorObjeto.velocidadY = 0
@@ -439,8 +485,7 @@ function sePresionaUnaTecla(event) {
 }
 
 function iniciarMapa() {
-    mapa.width = 800
-    mapa.height = 600
+    
     titanJugadorObjeto = obtenerObjetoMascota(titanJugador)
 
     intervalo = setInterval(pintarCanvas, 50)
@@ -479,7 +524,11 @@ function revisarColision(enemigo) {
         return
     }
     detenerMovimiento()
-    alert("Hay colision con " + enemigo.nombre)
+    clearInterval(intervalo)
+    sectionSeleccionarAtaque.style.display = "flex" // style.display = block me permite volver a ver la seccion en cuestion   
+    sectionVerMapa.style.display = "none"
+    seleccionarTitanEnemigo(enemigo)
+    
 }
 
 window.addEventListener("load", iniciarJuego)

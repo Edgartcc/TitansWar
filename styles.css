@@ -44,8 +44,10 @@ body{
 }
 .subtitulo{
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 4rem;
+    margin-top: 4rem;
+
 }
 
 
@@ -222,9 +224,46 @@ input:checked + label {
     justify-content: center;
 }
 
-#mapa {
-    border: 2px solid white;
+#ver-mapa button {
+    background: transparent;
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+    
+    font-size: 2rem;
+    border: 0.2rem solid white;
+    margin: 1rem 0;
+    
 }
+
+.move-button {
+    display: grid;
+    gap: .125rem;
+    grid-template-columns: repeat(3, 0.5fr);
+    grid-template-rows: repeat(3, 0.5fr);
+}
+
+.move-button .up {
+    grid-column: 2 / 3;
+}
+
+.move-button .right {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+.move-button .down {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+.move-button .left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+
+
+
 
 
 @media (max-width: 450px) {
