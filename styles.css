@@ -121,7 +121,7 @@ input:checked + label {
 }
 
 .boton-de-ataque {
-    background-color: rgba(98, 127, 143, 0.8);
+    background-color: rgba(211, 229, 228, 0.8);
     padding: 1.2rem;
     margin: 1rem;
     border: 0.2rem groove #fff;

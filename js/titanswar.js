@@ -493,6 +493,8 @@ function iniciarMapa() {
     window.addEventListener("keydown", sePresionaUnaTecla)
 
     window.addEventListener("keyup", detenerMovimiento)
+
+    
 }
 
 function obtenerObjetoMascota() {
