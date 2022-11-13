@@ -211,6 +211,15 @@ function iniciarJuego() {
     botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
     
     botonReiniciar.addEventListener("click", reiniciarJuego)
+
+    unirseAlJuego()
+}
+
+function unirseAlJuego() {
+    fetch("http://localhost:8080/unirse")
+        .then(function (res) {
+            console.log(res)
+        })
 }
 
 function seleccionarTitan() {   
