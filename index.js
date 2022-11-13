@@ -1,6 +1,10 @@
 const express = require("express")
+const cors = require("cors")
 
 const app = express()
+
+app.use(cors())
+app.use(express.json())
 
 const jugadores = []
 
@@ -9,6 +13,15 @@ class Jugador {
         this.id = id
     }
     
+    asignarTitan(titan) {
+        this.titan = titan
+    }
+}
+
+class Titan {
+    constructor(nombre) {
+        this.nombre = nombre
+    }
 }
 
 app.get("/unirse", (req, res) => {
@@ -21,6 +34,21 @@ app.get("/unirse", (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
 
     res.send(id)
+})
+
+app.post("/titan/:jugadorId", (req, res) => {
+    const jugadorId = req.params.jugadorId || ""
+    const nombre = req.body.titan || ""
+    const titan = new Titan(nombre)
+    
+    const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+
+    if (jugadorIndex >= 0) {
+        jugadores[jugadorIndex].asignarTitan(titan)
+    }
+
+    
+    res.end()
 })
 
 app.listen(8080, () => {

@@ -1,9 +1,11 @@
+const { json } = require("express")
+
 const sectionSeleccionarAtaque = document.getElementById("ataque-titan")
 const sectionReiniciar = document.getElementById("reiniciar")
 const botonTitan = document.getElementById("boton-titan")
 
 
-const sectionSeleccionarTitan = document.getElementById("seleccion-titan")
+const sectionSeleccionarTitanJugador = document.getElementById("seleccion-titan")
 
 const titanJugador = document.getElementById("titan-jugador")
 
@@ -24,6 +26,7 @@ const contenedorAtaques = document.getElementById(`contenedorAtaques`)
 const sectionVerMapa = document.getElementById("ver-mapa")
 const mapa = document.getElementById("mapa")
 
+let jugadorId = null
 let titanes = []//para arrays arreglos
 
 let ataqueJugador = []
@@ -208,7 +211,7 @@ function iniciarJuego() {
 
     })
 
-    botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
+    botonTitan.addEventListener("click", seleccionarTitanJugador)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
     
     botonReiniciar.addEventListener("click", reiniciarJuego)
 
@@ -223,14 +226,15 @@ function unirseAlJuego() {
                 res.text()
                     .then(function(respuesta) {
                         console.log(respuesta)
+                        jugadorId = respuesta
                     })
             }
         })
 }
 
-function seleccionarTitan() {   
+function seleccionarTitanJugador() {   
    
-    sectionSeleccionarTitan.style.display = "none" 
+    sectionSeleccionarTitanJugador.style.display = "none" 
     
     
     if (inputFemenina.checked) {
@@ -251,12 +255,26 @@ function seleccionarTitan() {
     } else {
         alert("Te falta seleccionar mi brother")
     }
+
+    seleccionarTitan(titanJugador)
     
     extraerAtaques(titanesJugador)
     sectionVerMapa.style.display = "flex"
     iniciarMapa()
     
     
+}
+
+function seleccionarTitan(titanJugador) {
+    fetch(`http://localhost:8080/titan${jugadorId}`, {
+        method: "post",
+        headers: {
+            "content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            titan: titanJugador
+        })
+    })
 }
 
 function extraerAtaques(titanesJugador) {
@@ -313,7 +331,7 @@ function secuenciaAtaque() {
     
 }
 
-function seleccionarTitanEnemigo(enemigo) {
+function seleccionarTitanJugadorEnemigo(enemigo) {
     titanEnemigo.innerHTML = enemigo.nombre  
     ataquesTitanEnemigo = enemigo.ataques
     secuenciaAtaque()
@@ -501,7 +519,7 @@ function sePresionaUnaTecla(event) {
 
 function iniciarMapa() {
     
-    titanJugadorObjeto = obtenerObjetoMascota(titanJugador)
+    titanJugadorObjeto = obtenerObjetoTitan(titanJugador)
 
     intervalo = setInterval(pintarCanvas, 50)
     
@@ -512,7 +530,7 @@ function iniciarMapa() {
     
 }
 
-function obtenerObjetoMascota() {
+function obtenerObjetoTitan() {
     for (let i = 0; i < titanes.length; i++) {
         if (titanesJugador === titanes[i].nombre) {
             return titanes[i]
@@ -544,7 +562,7 @@ function revisarColision(enemigo) {
     clearInterval(intervalo)
     sectionSeleccionarAtaque.style.display = "flex" // style.display = block me permite volver a ver la seccion en cuestion   
     sectionVerMapa.style.display = "none"
-    seleccionarTitanEnemigo(enemigo)
+    seleccionarTitanJugadorEnemigo(enemigo)
     
 }
 
