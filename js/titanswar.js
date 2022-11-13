@@ -218,7 +218,13 @@ function iniciarJuego() {
 function unirseAlJuego() {
     fetch("http://localhost:8080/unirse")
         .then(function (res) {
-            console.log(res)
+            
+            if (res.ok) {
+                res.text()
+                    .then(function(respuesta) {
+                        console.log(respuesta)
+                    })
+            }
         })
 }
 
