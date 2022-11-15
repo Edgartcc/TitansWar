@@ -16,6 +16,11 @@ class Jugador {
     asignarTitan(titan) {
         this.titan = titan
     }
+
+    actualizarPosicion(x, y) {
+        this.x = x
+        this.y = y
+    }
 }
 
 class Titan {
@@ -53,6 +58,21 @@ app.post("/titan/:jugadorId", (req, res) => {
     console.log(jugadorId)
     
     res.end()
+})
+
+app.post("/titan/:jugadorId/posicion", (req, res) => {
+    const jugadorId = req.params.jugadorId || ""
+    const x = req.body.x || 0
+    const y = req.body.y || 0
+
+    const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
+
+    if (jugadorIndex >= 0) {
+        jugadores[jugadorIndex].actualizarPosicion(x, y)
+    }
+
+    res.end()
+
 })
 
 app.listen(8080, () => {

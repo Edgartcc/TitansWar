@@ -456,6 +456,11 @@ function pintarCanvas() {
         mapa.height
     )
     titanJugadorObjeto.pintarTitan()
+
+    enviarPosicion(titanJugadorObjeto.x, titanJugadorObjeto.y)
+
+
+
     femeninaEnemigos.pintarTitan()
     ataqueEnemigos.pintarTitan()
     acorazadoEnemigos.pintarTitan()
@@ -468,6 +473,20 @@ function pintarCanvas() {
         revisarColision(bestiaEnemigos)
         revisarColision(colosalEnemigos)
     }
+}
+
+function enviarPosicion(x, y) {
+    fetch(`http://localhost:8080/titan/${jugadorId}/posicion`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            x,
+            y
+        })
+    }) 
+    
 }
 
 function moverDerecha() {
