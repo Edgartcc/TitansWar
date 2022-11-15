@@ -26,6 +26,7 @@ const mapa = document.getElementById("mapa")
 
 let jugadorId = null
 let titanes = []//para arrays arreglos
+let titanesEnemigos = []
 
 let ataqueJugador = []
 let ataqueEnemigo = []
@@ -73,7 +74,8 @@ mapa.height = alturaQueBuscamos
 
 
 class TitansWar {//Los nombres de las clases siempre inician con mayuscula a difeirecia de las variables
-    constructor(nombre, foto, vida, fotoMapa) {
+    constructor(nombre, foto, vida, fotoMapa, id = null) {
+        this.id = id
         this.nombre = nombre
         this.foto = foto
         this.vida = vida
@@ -104,82 +106,67 @@ let acorazado = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d
 let bestia = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5, "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png")
 let colosal = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5, "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png")
 
-let femeninaEnemigos = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 5, "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png")
-let ataqueEnemigos = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5, "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png")
-let acorazadoEnemigos = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5, "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png")
-let bestiaEnemigos = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5, "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png")
-let colosalEnemigos = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5, "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png")
+//let femeninaEnemigos = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 5, "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png")
+//let ataqueEnemigos = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5, "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png")
+//let acorazadoEnemigos = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5, "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png")
+//let bestiaEnemigos = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5, "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png")
+//let colosalEnemigos = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5, "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png")
 
-femenina.ataques.push(
+const FEMENINA_ATAQUES = [
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🧊", id: "boton-agua" },
-)
-femeninaEnemigos.ataques.push(
-    { nombre:"🔥", id: "boton-fuego" },
-    { nombre:"🔥", id: "boton-fuego" },
-    { nombre:"🔥", id: "boton-fuego" },
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🧊", id: "boton-agua" },
-)
-ataque.ataques.push(
+]
+
+const ATAQUE_ATAQUES = [
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🧊", id: "boton-agua" },
-)
-ataqueEnemigos.ataques.push(
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🔥", id: "boton-fuego" },
-    { nombre:"🧊", id: "boton-agua" },
-)
-acorazado.ataques.push(
+]
+
+const ACORAZADO_ATAQUES = [
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🔥", id: "boton-fuego" },
-)
-acorazadoEnemigos.ataques.push(
-    { nombre:"🧊", id: "boton-agua" },
-    { nombre:"🧊", id: "boton-agua" },
-    { nombre:"🧊", id: "boton-agua" },
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🔥", id: "boton-fuego" },
-)
-bestia.ataques.push(
+]
+
+const BESTIA_ATAQUES = [
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🔥", id: "boton-fuego" },
     { nombre:"🧊", id: "boton-agua" },
-)
-bestiaEnemigos.ataques.push(
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🔥", id: "boton-fuego" },
-    { nombre:"🧊", id: "boton-agua" },
-)
-colosal.ataques.push(
+]
+
+const COLOSAL_ATAQUES = [
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🧊", id: "boton-agua" },
     { nombre:"🌱", id: "boton-tierra" },
     { nombre:"🔥", id: "boton-fuego" },
-)
-colosalEnemigos.ataques.push(
-    { nombre:"🧊", id: "boton-agua" },
-    { nombre:"🧊", id: "boton-agua" },
-    { nombre:"🧊", id: "boton-agua" },
-    { nombre:"🌱", id: "boton-tierra" },
-    { nombre:"🔥", id: "boton-fuego" },
-)
+]
+
+
+femenina.ataques.push(...FEMENINA_ATAQUES)
+//femeninaEnemigos.ataques.push(...FEMENINA_ATAQUES)
+
+ataque.ataques.push(...ATAQUE_ATAQUES)
+//ataqueEnemigos.ataques.push(...ATAQUE_ATAQUES)
+
+acorazado.ataques.push(...ACORAZADO_ATAQUES)
+//acorazadoEnemigos.ataques.push(...ACORAZADO_ATAQUES)
+
+bestia.ataques.push(...BESTIA_ATAQUES)
+//bestiaEnemigos.ataques.push(...BESTIA_ATAQUES)
+
+colosal.ataques.push(...COLOSAL_ATAQUES)
+//colosalEnemigos.ataques.push(...COLOSAL_ATAQUES)
 
 
 titanes.push(femenina, ataque, acorazado, bestia, colosal)
@@ -459,13 +446,17 @@ function pintarCanvas() {
 
     enviarPosicion(titanJugadorObjeto.x, titanJugadorObjeto.y)
 
+    titanesEnemigos.forEach(function (titan) {
+        titan.pintarTitan()
+    }) 
+        
+    
 
-
-    femeninaEnemigos.pintarTitan()
+   /*  femeninaEnemigos.pintarTitan()
     ataqueEnemigos.pintarTitan()
     acorazadoEnemigos.pintarTitan()
     bestiaEnemigos.pintarTitan()
-    colosalEnemigos.pintarTitan()
+    colosalEnemigos.pintarTitan() */
     if (titanJugadorObjeto.velocidadX !== 0 || titanJugadorObjeto.velocidadY !== 0) {
         revisarColision(femeninaEnemigos)
         revisarColision(ataqueEnemigos)
@@ -486,7 +477,38 @@ function enviarPosicion(x, y) {
             y
         })
     }) 
-    
+    .then(function(res) {
+        if (res.ok){
+            res.json()
+                .then(function ({ enemigos }) {
+                    console.log(enemigos)
+                    
+                    titanesEnemigos = enemigos.map(function (enemigo) {
+                        let titanEnemigos = null
+                        const titanNombre = enemigo.titan.nombre || ""
+                        if (titanNombre === "Femenina") {
+                            titanEnemigos = new TitansWar("Femenina", "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png", 5, "https://i.pinimg.com/originals/b0/5e/6d/b05e6de155209ef81fd8e8e967d69855.png")
+                        } else if (titanNombre === "Ataque") {
+                            titanEnemigos = new TitansWar ("Ataque", "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png", 5, "https://i.pinimg.com/originals/55/65/77/556577c1f56e9a19b5e612e6eed779ef.png")
+                        } else if (titanNombre === "Acorazado") {
+                            titanEnemigos = new TitansWar("Acorazado", "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png" ,5, "https://i.pinimg.com/originals/9f/1d/7a/9f1d7a2ab249a86a29472040f1ef0310.png")
+                        } else if (titanNombre === "Bestia") {
+                            titanEnemigos = new TitansWar("Bestia", "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png", 5, "https://i.pinimg.com/originals/c5/98/47/c5984763c9e6ca24918a59f5609f729d.png")
+                        } else if (titanNombre === "Colosal") {
+                            titanEnemigos = new TitansWar("Colosal", "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png", 5, "https://www.koeitecmoeurope.com/aot2/finalbattle/img/character/titan03.png")
+                        }
+
+                        
+                        titanEnemigos.x = enemigo.x
+                        titanEnemigos.y = enemigo.y
+
+                        return titanEnemigos
+                    })               
+                    
+                  
+                })
+        }
+    })
 }
 
 function moverDerecha() {
