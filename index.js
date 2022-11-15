@@ -40,6 +40,8 @@ app.post("/titan/:jugadorId", (req, res) => {
     const jugadorId = req.params.jugadorId || ""
     const nombre = req.body.titan || ""
     const titan = new Titan(nombre)
+    console.log(jugadores)
+    console.log(jugadorId)
     
     const jugadorIndex = jugadores.findIndex((jugador) => jugadorId === jugador.id)
 
@@ -47,6 +49,8 @@ app.post("/titan/:jugadorId", (req, res) => {
         jugadores[jugadorIndex].asignarTitan(titan)
     }
 
+    console.log(jugadores)
+    console.log(jugadorId)
     
     res.end()
 })

@@ -1,11 +1,9 @@
-const { json } = require("express")
-
 const sectionSeleccionarAtaque = document.getElementById("ataque-titan")
 const sectionReiniciar = document.getElementById("reiniciar")
 const botonTitan = document.getElementById("boton-titan")
 
 
-const sectionSeleccionarTitanJugador = document.getElementById("seleccion-titan")
+const sectionSeleccionarTitan = document.getElementById("seleccion-titan")
 
 const titanJugador = document.getElementById("titan-jugador")
 
@@ -211,7 +209,7 @@ function iniciarJuego() {
 
     })
 
-    botonTitan.addEventListener("click", seleccionarTitanJugador)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
+    botonTitan.addEventListener("click", seleccionarTitan)//Probabkemente el codigo no carga, ya que addeventlistnere se carga antes de que el documento html sea leido   
     
     botonReiniciar.addEventListener("click", reiniciarJuego)
 
@@ -232,9 +230,9 @@ function unirseAlJuego() {
         })
 }
 
-function seleccionarTitanJugador() {   
+function seleccionarTitan() {   
    
-    sectionSeleccionarTitanJugador.style.display = "none" 
+    sectionSeleccionarTitan.style.display = "none" 
     
     
     if (inputFemenina.checked) {
@@ -255,9 +253,9 @@ function seleccionarTitanJugador() {
     } else {
         alert("Te falta seleccionar mi brother")
     }
-
-    seleccionarTitan(titanJugador)
     
+    seleccionarTitanes(titanesJugador)
+
     extraerAtaques(titanesJugador)
     sectionVerMapa.style.display = "flex"
     iniciarMapa()
@@ -265,14 +263,14 @@ function seleccionarTitanJugador() {
     
 }
 
-function seleccionarTitan(titanJugador) {
-    fetch(`http://localhost:8080/titan${jugadorId}`, {
+function seleccionarTitanes(titanesJugador) {
+    fetch(`http://localhost:8080/titan/${jugadorId}`, {
         method: "post",
         headers: {
-            "content-Type": "application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            titan: titanJugador
+            titan: titanesJugador
         })
     })
 }
@@ -331,7 +329,7 @@ function secuenciaAtaque() {
     
 }
 
-function seleccionarTitanJugadorEnemigo(enemigo) {
+function seleccionarTitanEnemigo(enemigo) {
     titanEnemigo.innerHTML = enemigo.nombre  
     ataquesTitanEnemigo = enemigo.ataques
     secuenciaAtaque()
@@ -562,9 +560,8 @@ function revisarColision(enemigo) {
     clearInterval(intervalo)
     sectionSeleccionarAtaque.style.display = "flex" // style.display = block me permite volver a ver la seccion en cuestion   
     sectionVerMapa.style.display = "none"
-    seleccionarTitanJugadorEnemigo(enemigo)
+    seleccionarTitanEnemigo(enemigo)
     
 }
 
 window.addEventListener("load", iniciarJuego)
-
